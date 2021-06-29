@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_sample2021/test/network/NetWorkPage.dart';
+import 'package:flutter_sample2021/test/phone/PhonePage.dart';
 import 'package:flutter_sample2021/utils/ToastUtil.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,19 +11,30 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  final List<String> _entryNames = ["网络请求", "工具类", "上拉加载", "图片"];
+class _HomePageState extends State<HomePage>
+    with AutomaticKeepAliveClientMixin {
+  final List<String> _entryNames = ["网络请求", "电话/短信等", "上拉加载", "图片"];
+
+/**
+ * AutomaticKeepAliveClientMixin 保持页面状态
+ */
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  void initState() {
+    super.initState();
+    print(11111111);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("颖辰"),
-        ),
-        body: Center(
-          child: _entryListWidget(),
-        ),
-      ),
+          appBar: AppBar(
+            title: Text("颖辰"),
+          ),
+          body: _entryListWidget()),
     );
   }
 
@@ -30,7 +43,39 @@ class _HomePageState extends State<HomePage> {
    */
   _entryListWidget() {
     if (_entryNames.length > 0) {
-      return Container(
+      //下拉刷新
+      return EasyRefresh(
+          header: ClassicalHeader(
+            bgColor: Colors.white,
+            textColor: Colors.black87,
+            infoColor: Colors.black87,
+            showInfo: true,
+            noMoreText: "没有更多了",
+            refreshReadyText:"开始刷新",
+            refreshingText: "正在刷新",
+            refreshedText: "刷新完成"
+            //infoText: "加载中"
+          ),
+          footer: ClassicalFooter(
+            bgColor: Colors.white,
+            textColor: Colors.black87,
+            infoColor: Colors.black87,
+            showInfo: true,
+            noMoreText: "没有更多了",
+            loadReadyText:"开始加载",
+            loadingText:"正在加载",
+            //loadText:"上拉加载",
+            loadedText:"上拉加载"
+            // infoText: "加载中"
+          ),
+          onRefresh: () async {
+            // FinishRefresh(true, false);
+            // ToastUtil.showToastCenter(context, "下拉刷新");
+          },
+          onLoad: () async {
+            //FinishLoad(true, false);
+            // ToastUtil.showToastCenter(context, "上拉加载");
+          },
           child: ListView.builder(
               padding: EdgeInsets.all(10),
               scrollDirection: Axis.vertical,
@@ -72,7 +117,9 @@ class _HomePageState extends State<HomePage> {
       Navigator.push(context,
           new MaterialPageRoute(builder: (context) => new NetWorkPage()));
     } else if (index == 1) {
-      ToastUtil.showToastCenter(context, "点击啦2");
+      //电话/短信等
+      Navigator.push(context,
+          new MaterialPageRoute(builder: (context) => new PhonePage()));
     } else if (index == 2) {
       ToastUtil.showToastCenter(context, "点击啦3");
     } else if (index == 3) {
@@ -80,9 +127,6 @@ class _HomePageState extends State<HomePage> {
     } else if (index == 4) {
       ToastUtil.showToastCenter(context, "点击啦5");
     }
-
-    bool isShow = false;
-    String result = isShow ? "ddd" : "ddddadf";
   }
 
   /**

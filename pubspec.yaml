@@ -34,6 +34,14 @@ dependencies:
   provider: ^5.0.0
   # Toast弹窗
   toast: ^0.1.5
+  # 轮播图
+  flutter_swiper: ^1.1.6
+  # 屏幕适配
+  flutter_screenutil: ^5.0.0+2
+  # 电话/短信/网页url
+  url_launcher: ^6.0.7
+  # 下拉刷新/上拉加载
+  flutter_easyrefresh: ^2.2.1
 
 
 # 仅开发阶段使用

@@ -17,14 +17,18 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final List<BottomNavigationBarItem> bottomTabs = [
     BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), label: "首页"),
-    BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.search), label: "分类"),
+    BottomNavigationBarItem(icon: Icon(CupertinoIcons.search), label: "分类"),
     BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.shopping_cart), label: "购物车"),
     BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.profile_circled), label: "我的"),
   ];
-  final List tabPages = [HomePage(), CategoryPage(), CartPage(), MinePage()];
+  final List<Widget> tabPages = [
+    HomePage(),
+    CategoryPage(),
+    CartPage(),
+    MinePage()
+  ];
   int currentIndex = 0;
   var currentPage;
 
@@ -40,7 +44,11 @@ class _MainPageState extends State<MainPage> {
     return Container(
       child: Scaffold(
         backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
-        body: tabPages[currentIndex],
+        body: IndexedStack(
+          //IndexedStack 保持页面状态
+          index: currentIndex,
+          children: tabPages,
+        ),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           currentIndex: currentIndex,
