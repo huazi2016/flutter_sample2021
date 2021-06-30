@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_sample2021/test/network/NetWorkPage.dart';
 import 'package:flutter_sample2021/test/phone/PhonePage.dart';
+import 'package:flutter_sample2021/test/provide/ProvidePage.dart';
 import 'package:flutter_sample2021/utils/ToastUtil.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,7 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin {
-  final List<String> _entryNames = ["网络请求", "电话/短信等", "上拉加载", "图片"];
+  final List<String> _entryNames = ["网络请求", "电话/短信等", "provide状态管理", "图片"];
 
 /**
  * AutomaticKeepAliveClientMixin 保持页面状态
@@ -121,7 +122,9 @@ class _HomePageState extends State<HomePage>
       Navigator.push(context,
           new MaterialPageRoute(builder: (context) => new PhonePage()));
     } else if (index == 2) {
-      ToastUtil.showToastCenter(context, "点击啦3");
+      //provide状态管理
+      Navigator.push(context,
+          new MaterialPageRoute(builder: (context) => new ProvidePage()));
     } else if (index == 3) {
       ToastUtil.showToastCenter(context, "点击啦4");
     } else if (index == 4) {

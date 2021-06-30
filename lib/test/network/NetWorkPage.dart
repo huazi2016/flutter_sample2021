@@ -53,7 +53,7 @@ class _NetWorkPageState extends State<NetWorkPage> {
       Response response =
           //await dio.get("https://time.geekbang.org/serv/v2/explore/list");
           await dio.get(servicePath["service_time"]);
-          // await dio.get("https://gank.io/api/v2/categories/Article");
+      // await dio.get("https://gank.io/api/v2/categories/Article");
       // return print(response);
       return response;
     } catch (e) {
