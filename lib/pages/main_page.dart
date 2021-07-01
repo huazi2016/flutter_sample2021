@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 //苹果风格
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_sample2021/pages/home/CartPage.dart';
-import 'package:flutter_sample2021/pages/home/CategoryPage.dart';
-import 'package:flutter_sample2021/pages/home/HomePage.dart';
-import 'package:flutter_sample2021/pages/home/MinePage.dart';
+import 'package:flutter_sample2021/pages/home/cart_page.dart';
+import 'package:flutter_sample2021/pages/home/category_page.dart';
+import 'package:flutter_sample2021/pages/home/home_page.dart';
+import 'package:flutter_sample2021/pages/home/mine_page.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key key}) : super(key: key);

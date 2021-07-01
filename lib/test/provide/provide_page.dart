@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample2021/test/provide/CountModel.dart';
+import 'package:flutter_sample2021/test/provide/count_model.dart';
 import 'package:provider/provider.dart';
 
 class ProvidePage extends StatefulWidget {

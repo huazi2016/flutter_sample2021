@@ -1,9 +1,11 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sample2021/pages/MainPage.dart';
-import 'package:flutter_sample2021/test/provide/CountModel.dart';
+import 'package:flutter_sample2021/pages/main_page.dart';
+import 'package:flutter_sample2021/test/provide/count_model.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  final router = FluroRouter();
   //runApp(MyApp());
   //全局provide监听
   //接收页面不需要声明ChangeNotifierProvider, 只需通过Consumer获取Model使用

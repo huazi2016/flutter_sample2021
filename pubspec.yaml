@@ -42,6 +42,8 @@ dependencies:
   url_launcher: ^6.0.7
   # 下拉刷新/上拉加载
   flutter_easyrefresh: ^2.2.1
+  # Router-企业级
+  fluro: ^2.0.3
 
 
 # 仅开发阶段使用

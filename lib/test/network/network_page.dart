@@ -1,17 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sample2021/test/network/Config.dart';
-import 'package:flutter_sample2021/utils/ToastUtil.dart';
-import 'package:flutter_sample2021/test/network/Config.dart';
+import 'package:flutter_sample2021/test/network/net_config.dart';
+import 'package:flutter_sample2021/test/network/net_config.dart';
 
-class NetWorkPage extends StatefulWidget {
-  NetWorkPage({Key key}) : super(key: key);
+class NetworkPage extends StatefulWidget {
+  NetworkPage({Key key}) : super(key: key);
 
   @override
-  _NetWorkPageState createState() => _NetWorkPageState();
+  _NetworkPageState createState() => _NetworkPageState();
 }
 
-class _NetWorkPageState extends State<NetWorkPage> {
+class _NetworkPageState extends State<NetworkPage> {
   String _json = "";
   @override
   Widget build(BuildContext context) {
