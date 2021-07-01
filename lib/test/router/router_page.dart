@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample2021/base/application.dart';
+import 'package:flutter_sample2021/router/my_routers.dart';
 
 class RouterPage extends StatefulWidget {
   final String goodsId;
@@ -16,11 +18,36 @@ class _RouterPageState extends State<RouterPage> {
     print("goodsId====" + widget.goodsId);
     return Container(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("router demo"),
-        ),
-        body: Text("测试"),
-      ),
+          appBar: AppBar(
+            title: Text("router demo"),
+          ),
+          body: Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              MaterialButton(
+                  child: Text("跳转-->1"),
+                  textColor: Colors.white,
+                  color: Colors.blue,
+                  onPressed: () {
+                    Application.router.navigateTo(context, MyRouters.router_page01);
+                  }),
+              MaterialButton(
+                  child: Text("跳转-->2"),
+                  textColor: Colors.white,
+                  color: Colors.blue,
+                  onPressed: () {
+                    Application.router.navigateTo(context,  MyRouters.router_page02);
+                  }),
+              MaterialButton(
+                  child: Text("跳转-->空视图"),
+                  textColor: Colors.white,
+                  color: Colors.blue,
+                  onPressed: () {
+                    Application.router.navigateTo(context, "/dfdsafds");
+                  })
+            ],
+          ))),
     );
   }
 }

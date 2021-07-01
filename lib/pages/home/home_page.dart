@@ -4,7 +4,7 @@ import 'package:flutter_sample2021/test/network/network_page.dart';
 import 'package:flutter_sample2021/test/phone/phone_page.dart';
 import 'package:flutter_sample2021/test/provide/provide_page.dart';
 import 'package:flutter_sample2021/test/router/router_page.dart';
-import 'package:flutter_sample2021/utils/ToastUtil.dart';
+import 'package:flutter_sample2021/utils/toast_util.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
