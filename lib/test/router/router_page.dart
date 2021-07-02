@@ -30,21 +30,21 @@ class _RouterPageState extends State<RouterPage> {
                   textColor: Colors.white,
                   color: Colors.blue,
                   onPressed: () {
-                    Application.router.navigateTo(context, MyRouters.router_page01);
+                    Application.router.navigateTo(context, MyRouters.routerPage01 + "");
                   }),
               MaterialButton(
                   child: Text("跳转-->2"),
                   textColor: Colors.white,
                   color: Colors.blue,
                   onPressed: () {
-                    Application.router.navigateTo(context,  MyRouters.router_page02);
+                    Application.router.navigateTo(context,  MyRouters.routerPage02);
                   }),
               MaterialButton(
                   child: Text("跳转-->空视图"),
                   textColor: Colors.white,
                   color: Colors.blue,
                   onPressed: () {
-                    Application.router.navigateTo(context, "/dfdsafds");
+                    Application.router.navigateTo(context, MyRouters.root);
                   })
             ],
           ))),

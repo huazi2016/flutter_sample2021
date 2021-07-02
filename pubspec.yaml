@@ -44,6 +44,12 @@ dependencies:
   flutter_easyrefresh: ^2.2.1
   # Router-企业级
   fluro: ^2.0.3
+  # html库
+  flutter_html: ^2.1.0
+  # 轻量级存储
+  shared_preferences: ^2.0.5
+  # 同步锁
+  synchronized: ^3.0.0
 
 
 # 仅开发阶段使用

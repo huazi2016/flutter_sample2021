@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_sample2021/base/application.dart';
+import 'package:flutter_sample2021/router/my_routers.dart';
 import 'package:flutter_sample2021/test/network/network_page.dart';
 import 'package:flutter_sample2021/test/phone/phone_page.dart';
 import 'package:flutter_sample2021/test/provide/provide_page.dart';
 import 'package:flutter_sample2021/test/router/router_page.dart';
+import 'package:flutter_sample2021/utils/shared_preferences.dart';
 import 'package:flutter_sample2021/utils/toast_util.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,7 +18,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin {
-  final List<String> _entryNames = ["网络请求", "电话/短信等", "provide状态管理", "Router企业级"];
+  final List<String> _entryNames = [
+    "网络请求",
+    "电话/短信等",
+    "provide状态管理",
+    "Router企业级",
+    "html加载"
+  ];
 
 /**
  * AutomaticKeepAliveClientMixin 保持页面状态
@@ -48,28 +57,28 @@ class _HomePageState extends State<HomePage>
       //下拉刷新
       return EasyRefresh(
           header: ClassicalHeader(
-            bgColor: Colors.white,
-            textColor: Colors.black87,
-            infoColor: Colors.black87,
-            showInfo: true,
-            noMoreText: "没有更多了",
-            refreshReadyText:"开始刷新",
-            refreshingText: "正在刷新",
-            refreshedText: "刷新完成"
-            //infoText: "加载中"
-          ),
+              bgColor: Colors.white,
+              textColor: Colors.black87,
+              infoColor: Colors.black87,
+              showInfo: true,
+              noMoreText: "没有更多了",
+              refreshReadyText: "开始刷新",
+              refreshingText: "正在刷新",
+              refreshedText: "刷新完成"
+              //infoText: "加载中"
+              ),
           footer: ClassicalFooter(
-            bgColor: Colors.white,
-            textColor: Colors.black87,
-            infoColor: Colors.black87,
-            showInfo: true,
-            noMoreText: "没有更多了",
-            loadReadyText:"开始加载",
-            loadingText:"正在加载",
-            //loadText:"上拉加载",
-            loadedText:"上拉加载"
-            // infoText: "加载中"
-          ),
+              bgColor: Colors.white,
+              textColor: Colors.black87,
+              infoColor: Colors.black87,
+              showInfo: true,
+              noMoreText: "没有更多了",
+              loadReadyText: "开始加载",
+              loadingText: "正在加载",
+              //loadText:"上拉加载",
+              loadedText: "上拉加载"
+              // infoText: "加载中"
+              ),
           onRefresh: () async {
             // FinishRefresh(true, false);
             // ToastUtil.showToastCenter(context, "下拉刷新");
@@ -118,6 +127,8 @@ class _HomePageState extends State<HomePage>
       //网络请求
       Navigator.push(context,
           new MaterialPageRoute(builder: (context) => new NetworkPage()));
+
+      SpUtil.putString("test_sp", "huazi");
     } else if (index == 1) {
       //电话/短信等
       Navigator.push(context,
@@ -128,11 +139,13 @@ class _HomePageState extends State<HomePage>
           new MaterialPageRoute(builder: (context) => new ProvidePage()));
     } else if (index == 3) {
       //Router企业级
-       Navigator.push(context,
-          new MaterialPageRoute(builder: (context) => new RouterPage(goodsId: "123")));
-          
+      Navigator.push(
+          context,
+          new MaterialPageRoute(
+              builder: (context) => new RouterPage(goodsId: "123")));
     } else if (index == 4) {
-      ToastUtil.showToastCenter(context, "点击啦5");
+      //html加载
+      Application.router.navigateTo(context, MyRouters.htmlPage);
     }
   }
 
