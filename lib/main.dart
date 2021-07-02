@@ -4,14 +4,22 @@ import 'package:flutter_sample2021/base/application.dart';
 import 'package:flutter_sample2021/pages/main_page.dart';
 import 'package:flutter_sample2021/router/my_routers.dart';
 import 'package:flutter_sample2021/test/provide/count_model.dart';
+import 'package:flutter_sample2021/test/provide/jump_model.dart';
 import 'package:flutter_sample2021/utils/shared_preferences.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   //全局provide监听
   //接收页面不需要声明ChangeNotifierProvider, 只需通过Consumer获取Model使用
-  runApp(ChangeNotifierProvider(
-    create: (_) => CountModel(),
+  // runApp(ChangeNotifierProvider(
+  //   create: (context) => JumpIndexProvide(),
+  //   child: MyApp(),
+  // ));
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider.value(value: CountModel()),
+      ChangeNotifierProvider.value(value: JumpModel()),
+    ],
     child: MyApp(),
   ));
   //runApp(MyApp());

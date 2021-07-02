@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample2021/base/application.dart';
 import 'package:flutter_sample2021/test/provide/count_model.dart';
+import 'package:flutter_sample2021/test/provide/jump_model.dart';
 import 'package:provider/provider.dart';
 
 class ProvidePage extends StatefulWidget {
@@ -47,7 +49,11 @@ class _ProvidePageState extends State<ProvidePage> {
               child: Column(
             //居中
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[Number(), MyButton()],
+            children: <Widget>[
+              Number(),
+              MyButton(),
+              JumpButton(),
+            ],
           ))),
     );
   }
@@ -76,6 +82,23 @@ class MyButton extends StatelessWidget {
             context.read<CountModel>().increment();
           },
           child: Text("开始"),
+          textColor: Colors.white,
+          color: Colors.blue),
+    );
+  }
+}
+
+class JumpButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(top: 20),
+      child: MaterialButton(
+          onPressed: () {
+            context.read<JumpModel>().changeIndex(1);
+            Application.router.pop(context);
+          },
+          child: Text("跳转首页"),
           textColor: Colors.white,
           color: Colors.blue),
     );

@@ -6,6 +6,8 @@ import 'package:flutter_sample2021/pages/home/cart_page.dart';
 import 'package:flutter_sample2021/pages/home/category_page.dart';
 import 'package:flutter_sample2021/pages/home/home_page.dart';
 import 'package:flutter_sample2021/pages/home/mine_page.dart';
+import 'package:flutter_sample2021/test/provide/jump_model.dart';
+import 'package:provider/provider.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key key}) : super(key: key);
@@ -30,37 +32,41 @@ class _MainPageState extends State<MainPage> {
     MinePage()
   ];
   int currentIndex = 0;
-  var currentPage;
+  //var currentPage;
 
   @override
   void initState() {
     //默认展示首页
-    currentPage = tabPages[currentIndex];
+    //currentPage = tabPages[currentIndex];
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
-        backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
-        body: IndexedStack(
-          //IndexedStack 保持页面状态
-          index: currentIndex,
-          children: tabPages,
+    return Consumer<JumpModel>(builder: (context, notifier, child) {
+      print("首页被重绘");
+      currentIndex = notifier.currentIndex;
+      return Container(
+        child: Scaffold(
+          backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
+          body: IndexedStack(
+            //IndexedStack 保持页面状态
+            index: currentIndex,
+            children: tabPages,
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            currentIndex: currentIndex,
+            items: bottomTabs,
+            onTap: (index) {
+              setState(() {
+                context.read<JumpModel>().changeIndex(index);
+                //currentPage = tabPages[currentIndex]
+              });
+            },
+          ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: currentIndex,
-          items: bottomTabs,
-          onTap: (index) {
-            setState(() {
-              currentIndex = index;
-              currentPage = tabPages[index];
-            });
-          },
-        ),
-      ),
-    );
+      );
+    });
   }
 }
