@@ -6,6 +6,7 @@ import 'package:flutter_sample2021/test/network/network_page.dart';
 import 'package:flutter_sample2021/test/phone/phone_page.dart';
 import 'package:flutter_sample2021/test/provide/provide_page.dart';
 import 'package:flutter_sample2021/test/router/router_page.dart';
+import 'package:flutter_sample2021/test/webview_page.dart';
 import 'package:flutter_sample2021/utils/shared_preferences.dart';
 import 'package:flutter_sample2021/utils/toast_util.dart';
 
@@ -23,7 +24,9 @@ class _HomePageState extends State<HomePage>
     "电话/短信等",
     "provide状态管理",
     "Router企业级",
-    "html加载"
+    "html加载",
+    "异步支持",
+    "webview"
   ];
 
 /**
@@ -146,7 +149,14 @@ class _HomePageState extends State<HomePage>
     } else if (index == 4) {
       //html加载
       Application.router.navigateTo(context, MyRouters.htmlPage);
-    }
+    } else if (index == 5) {
+      //异步支持
+      Application.router.navigateTo(context, MyRouters.asyncPage);
+    } else if (index == 6) {
+      //webview
+      Navigator.push(context,
+          new MaterialPageRoute(builder: (context) => new WebviewPage()));
+    } 
   }
 
   /**

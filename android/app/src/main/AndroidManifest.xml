@@ -2,6 +2,7 @@
     package="com.example.flutter_sample2021">
    <application
         android:label="flutter_sample2021"
+        android:android:usesCleartextTraffic = "true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
